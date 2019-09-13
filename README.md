@@ -4,6 +4,8 @@
 
 ### Overview
 
+This program simulates a crash transaction interface.
+
 ### How to run
 
 ### Technologies/ topics used
