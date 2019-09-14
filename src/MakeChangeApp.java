@@ -17,7 +17,11 @@ public class MakeChangeApp {
 	}
 	
 	public static void changeCalc(double charged, double paid) {
-		System.out.println(charged + paid);
+		
+		if (charged > paid) {
+			System.out.println("Amount: " + charged + ", Tendered: " + paid + ", Result: Error message");
+		}
+		
 	}
 	
 }
