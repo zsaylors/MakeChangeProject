@@ -12,7 +12,6 @@ public class MakeChangeApp {
 		paid = kb.nextDouble();
 
 		changeCalc(charged, paid);
-		changeCalc1(charged, paid);
 
 		kb.close();
 	}
