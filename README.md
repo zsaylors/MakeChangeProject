@@ -31,6 +31,4 @@ In spirit of DRY, one solution I tried was to assign variables amount1 = 20.00, 
 
 This change allowed it to be easier to add higher denominations of currency such as $50 and $100 by only changing three lines.  It reduced the chance of running into errors by human oversight. Also, the lines of uncommented code were reduced from 77 to 33 in the calculation method.
 
-Since arrays are out of scope of this past weeks topics, the old while loop can be found in the second to last commit.
-
 An additional lesson learned includes formatting doubles in printf.  Since cents are normally represented with two digits after the decimal, %.2f was added within double quotes in order to add two decimal spaces.
