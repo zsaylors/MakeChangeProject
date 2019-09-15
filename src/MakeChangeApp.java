@@ -6,92 +6,56 @@ public class MakeChangeApp {
 		Scanner kb = new Scanner(System.in);
 		double charged, paid;
 
+		// USER INPUT
 		System.out.print("Amount charged: ");
 		charged = kb.nextDouble();
 		System.out.print("Amount paid: ");
 		paid = kb.nextDouble();
 
+		// METHOD CALCULATES AND PRINTS CHANGE
 		changeCalc(charged, paid);
 
 		kb.close();
 	}
 
 	public static void changeCalc(double charged, double paid) {
-		int twentyDollars = 2000, tenDollars = 1000, fiveDollars = 500, oneDollar = 100, quarter = 25, dime = 10,
-				nickel = 5, penny = 1;
+		// AMMOUNT IS DOLLAR AND CHANGE AMOUNT MULTIPLIED BY 100.
+		int[] amount = new int[] { 10000, 5000, 2000, 1000, 500, 100, 25, 10, 5, 1 };
+		// CHANGE TYPES REPRESENT DOLLAR AMMOUNTS ASSOCIATED WITH INT[] AMMOUNT
+		String[] singularChangeType = new String[] { "one hundred dollar bill", "fifty dollar bill", "twenty dollar bill", "ten dollar bill", 
+													 "five dollar bill", "one dollar bill", "quarter", "dime", "nickel", "penny" };
+		String[] pluralChangeType = new String[] { "one hundred dollar bills", "fifty dollar bill", "twenty dollar bills", "ten dollar bills", 
+												   "five dollar bills", "one dollar bills", "quarters", "dimes", "nickels", "pennies" };
 		double difference = (paid - charged) * 100 + 0.5;
+		int i = 0;
 
+		// FIRST PART OF PRINTOUT
 		System.out.printf("Amount %.2f, Tendered: %.2f, Result: ", charged, paid);
 
+		//ERROR MESSAGE IF PAID IS LESS THAN OWED.
 		if (difference < 1) {
-			System.out.println("Error!");
+			System.out.printf("Error! %.2f is owed.", (charged - paid));
 		}
 
-		while (difference > 1) {
-			if (difference / twentyDollars > 1) {
-				if (difference / twentyDollars < 2) {
-					System.out.print((int) difference / twentyDollars + " twenty dollar bill");
+		//LOOP TO CALCULATE AND PRINT CHANGE.
+		for (i = 0; difference > 1; i++) {
+			double equation = difference / amount[i];
+			if (equation > 1) {
+				if (equation < 2) {
+					System.out.print(((int) equation) + " " + singularChangeType[i]);
 				} else {
-					System.out.print((int) difference / twentyDollars + " twenty dollar bills");
+					System.out.print(((int) equation) + " " + pluralChangeType[i]);
 				}
-				difference = difference % twentyDollars;
-			} else if (difference / tenDollars > 1) {
-				if (difference / tenDollars < 2) {
-					System.out.print((int) difference / tenDollars + " ten dollar bill");
-				} else {
-					System.out.print((int) difference / tenDollars + " ten dollar bills");
-				}
-				difference = difference % tenDollars;
-			} else if (difference / fiveDollars > 1) {
-				if (difference / fiveDollars < 2) {
-					System.out.print((int) difference / fiveDollars + " five dollar bill");
-				} else {
-					System.out.print((int) difference / fiveDollars + " five dollar bills");
-				}
-				difference = difference % fiveDollars;
-			} else if (difference / oneDollar > 1) {
-				if (difference / oneDollar < 2) {
-					System.out.print((int) difference / oneDollar + " one dollar bill");
-				} else {
-					System.out.print((int) difference / oneDollar + " one dollar bills");
-				}
-				difference = difference % oneDollar;
-			} else if (difference / quarter > 1) {
-				if (difference / quarter < 2) {
-					System.out.print((int) difference / quarter + " quarter");
+				difference = difference % amount[i];
 
+				if (difference > 1) {
+					System.out.print(", ");
 				} else {
-					System.out.print((int) difference / quarter + " quarters");
+					System.out.print(".");
 				}
-				difference = difference % quarter;
-			} else if (difference / dime > 1) {
-				if (difference / dime < 2) {
-					System.out.print((int) difference / dime + " dime");
-				} else {
-					System.out.print((int) difference / dime + " dimes");
-				}
-				difference = difference % dime;
-			} else if (difference / nickel > 1) {
-				if (difference / nickel < 2) {
-					System.out.print((int) difference / nickel + " nickel");
-				} else {
-					System.out.print((int) difference / nickel + " nickels");
-				}
-				difference = difference % nickel;
-			} else {
-				if (difference / penny < 2) {
-					System.out.print((int) difference / penny + " penny");
-				} else {
-					System.out.print((int) difference / penny + " pennies");
-				}
-				difference = difference % penny;
-			}
-
-			if (difference >= 1) {
-				System.out.print(", ");
-			} else {
-				System.out.print(".");
 			}
 		}
+		
 	}
+	
 }
