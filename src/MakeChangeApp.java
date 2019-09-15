@@ -36,7 +36,7 @@ public class MakeChangeApp {
 
 		// ERROR MESSAGE IF PAID IS LESS THAN OWED.
 		if (difference < 1) {
-			System.out.printf("Error! %.2f is owed.", (charged - paid));
+			System.out.printf("Error! %.2f is owed.%n", (charged - paid));
 		}
 
 		// LOOP TO CALCULATE AND PRINT CHANGE.
@@ -45,15 +45,17 @@ public class MakeChangeApp {
 			if (equation > 1) {
 				if (equation < 2) {
 					System.out.print(((int) equation) + " " + singularChangeType[i]);
-				} else {
+				} 
+				else {
 					System.out.print(((int) equation) + " " + pluralChangeType[i]);
 				}
 				difference = difference % amount[i];
 
 				if (difference > 1) {
 					System.out.print(", ");
-				} else {
-					System.out.print(".");
+				}
+				else {
+					System.out.print(".\n");
 				}
 			}
 		}
