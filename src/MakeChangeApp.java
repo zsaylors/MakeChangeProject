@@ -25,7 +25,7 @@ public class MakeChangeApp {
 		String[] singularChangeType = new String[] { "one hundred dollar bill", "fifty dollar bill",
 				"twenty dollar bill", "ten dollar bill", "five dollar bill", "one dollar bill", "quarter", "dime",
 				"nickel", "penny" };
-		String[] pluralChangeType = new String[] { "one hundred dollar bills", "fifty dollar bill",
+		String[] pluralChangeType = new String[] { "one hundred dollar bills", "fifty dollar bills",
 				"twenty dollar bills", "ten dollar bills", "five dollar bills", "one dollar bills", "quarters", "dimes",
 				"nickels", "pennies" };
 		double difference = (paid - charged) * 100 + 0.5;
